@@ -1,0 +1,162 @@
+﻿Customers used (discount $0 or $20): 5912
+Saved graph picture -> docs/causal_graph.png
+
+=== STEP 2: IDENTIFIED ESTIMAND ===
+Estimand type: nonparametric-ate
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+        d                                                 
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ(E[bought|past_purchases,loyalty_score])
+d[got_20_discount]                                        
+Estimand assumption 1, Unconfoundedness: If UΓåÆ{got_20_discount} and UΓåÆbought then P(bought|got_20_discount,past_purchases,loyalty_score,U) = P(bought|got_20_discount,past_purchases,loyalty_score)
+
+### Estimand : 2
+Estimand name: iv
+No such variable(s) found!
+
+### Estimand : 3
+Estimand name: frontdoor
+No such variable(s) found!
+
+linear_regression
+{'control_value': 0, 'treatment_value': 1, 'test_significance': None, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+
+=== STEP 3: ESTIMATE ===
+*** Causal Estimate ***
+
+## Identified estimand
+Estimand type: nonparametric-ate
+
+### Estimand : 1
+Estimand name: backdoor
+Estimand expression:
+        d                                                 
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ(E[bought|past_purchases,loyalty_score])
+d[got_20_discount]                                        
+Estimand assumption 1, Unconfoundedness: If UΓåÆ{got_20_discount} and UΓåÆbought then P(bought|got_20_discount,past_purchases,loyalty_score,U) = P(bought|got_20_discount,past_purchases,loyalty_score)
+
+## Realized estimand
+b: bought~got_20_discount+past_purchases+loyalty_score+got_20_discount*days_since_last_purchase+got_20_discount*age
+Target units: ate
+
+## Estimate
+Mean value: 0.16574703852827227
+### Conditional Estimates
+__categorical__days_since_last_purchase  __categorical__age
+(0.999, 77.0]                            (17.999, 27.0]        0.376510
+                                         (27.0, 37.0]          0.333392
+                                         (37.0, 46.0]          0.286353
+                                         (46.0, 56.0]          0.238503
+                                         (56.0, 65.0]          0.195770
+(77.0, 149.0]                            (17.999, 27.0]        0.314138
+                                         (27.0, 37.0]          0.269618
+                                         (37.0, 46.0]          0.222857
+                                         (46.0, 56.0]          0.178581
+                                         (56.0, 65.0]          0.135357
+(149.0, 218.0]                           (17.999, 27.0]        0.255309
+                                         (27.0, 37.0]          0.205350
+                                         (37.0, 46.0]          0.160773
+                                         (46.0, 56.0]          0.120863
+                                         (56.0, 65.0]          0.074910
+(218.0, 293.0]                           (17.999, 27.0]        0.192632
+                                         (27.0, 37.0]          0.147232
+                                         (37.0, 46.0]          0.101407
+                                         (46.0, 56.0]          0.057931
+                                         (56.0, 65.0]          0.013396
+(293.0, 365.0]                           (17.999, 27.0]        0.130802
+                                         (27.0, 37.0]          0.084300
+                                         (37.0, 46.0]          0.039726
+                                         (46.0, 56.0]         -0.002836
+                                         (56.0, 65.0]         -0.048169
+dtype: float64
+
+=== RESULT: effect of a $20 discount on probability of buying ===
+  Naive (just compare groups): +0.208
+  DoWhy (controls confounders): +0.166
+  TRUE effect (from generator): +0.156
+  The DoWhy number should be closer to the TRUE one than the naive one.
+
+=== STEP 4: REFUTATION TESTS ===
+
+--- random_common_cause ---
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+Refute: Add a random common cause
+Estimated effect:0.16574703852827227
+New effect:0.16568610299627198
+p value:0.3927499461189301
+
+
+--- data_subset_refuter ---
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+Refute: Use a subset of data
+Estimated effect:0.16574703852827227
+New effect:0.1644796341461605
+p value:0.4335489264907302
+
+
+--- placebo_treatment_refuter ---
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+{'control_value': 0, 'treatment_value': 1, 'test_significance': False, 'evaluate_effect_strength': False, 'confidence_intervals': False, 'target_units': 'ate', 'effect_modifiers': ['days_since_last_purchase', 'age']}
+Refute: Use a Placebo Treatment
+Estimated effect:0.16574703852827227
+New effect:0.0012592745814338918
+p value:0.46095819632071355
+
