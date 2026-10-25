@@ -8,8 +8,9 @@ Add one row each time you finish something. Be specific, and link the file or co
 ## Week 1
 
 | Date | What I did | Files / commit |
-|---|---|---|
-| | | |
+|25-10-2026|Created the GitHub repo and set up branches and folder structure|repo|
+|25-10-2026 | Generated the synthetic retail dataset with built-in confounding (loyal customers get bigger discounts and also buy more)|src/data_gen.py |
+|25-10-2026|Wrote the Hillstrom loader for the real-data comparison|src/load_hillstrom.py|
 
 ## Week 2
 
